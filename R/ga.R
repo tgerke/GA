@@ -415,12 +415,13 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   object@fitnessValue <- max(object@fitness, na.rm = TRUE)
   valueAt <- which(object@fitness == object@fitnessValue)
   solution <- object@population[valueAt,,drop=FALSE]
-  if(nrow(solution) > 1)
-    { # find unique solutions to precision given by default tolerance
-      eps <- gaControl("eps")
-      solution <- unique(round(solution/eps)*eps, margin = 1)
-    }
-  colnames(solution) <- parNames(object)
+  # if(nrow(solution) > 1)
+  #   { # find unique solutions to precision given by default tolerance
+  #     eps <- gaControl("eps")
+  #     solution <- unique(round(solution/eps)*eps, margin = 1)
+  #     solution <- solution[nrow(solution),]
+  #   }
+  #colnames(solution) <- parNames(object)
   object@solution <- solution
   if(keepBest)
     object@bestSol <- object@bestSol[!sapply(object@bestSol, is.null)]  
