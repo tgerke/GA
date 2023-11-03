@@ -417,8 +417,9 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   solution <- object@population[valueAt,,drop=FALSE]
   if(nrow(solution) > 1)
     { # find unique solutions to precision given by default tolerance
-      eps <- gaControl("eps")
-      solution <- unique(round(solution/eps)*eps, margin = 1)
+      #eps <- gaControl("eps")
+      #solution <- unique(round(solution/eps)*eps, margin = 1)
+      solution <- solution[nrow(solution),]
     }
   colnames(solution) <- parNames(object)
   object@solution <- solution
