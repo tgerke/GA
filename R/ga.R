@@ -415,6 +415,7 @@ ga <- function(type = c("binary", "real-valued", "permutation"),
   object@fitnessValue <- max(object@fitness, na.rm = TRUE)
   valueAt <- which(object@fitness == object@fitnessValue)
   solution <- object@population[valueAt,,drop=FALSE]
+
   # if(nrow(solution) > 1)
   #   { # find unique solutions to precision given by default tolerance
   #     eps <- gaControl("eps")
